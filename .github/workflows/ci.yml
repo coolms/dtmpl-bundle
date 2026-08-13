@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+  # Weekly, so a break from a dependency or a PHP point release shows up on a
+  # Monday rather than inside someone's pull request.
+  schedule:
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: PHP ${{ matrix.php }} ${{ matrix.deps }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.5']
+        deps: ['highest', 'lowest']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          extensions: none, ctype, dom, filter, json, libxml, mbstring, tokenizer, xml, xmlwriter, curl, phar, intl
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: |
+          if [ "${{ matrix.deps }}" = 'lowest' ]; then
+            composer update --prefer-lowest --prefer-dist --no-interaction --no-progress
+          else
+            composer update --prefer-dist --no-interaction --no-progress
+          fi
+
+      - name: Lint sources
+        run: find src tests -name '*.php' -print0 | xargs -0 -n1 -P4 php -l
+
+      - name: Run tests
+        run: vendor/bin/phpunit --testdox
+
+  boundary:
+    name: No application code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # This bundle exists to know about Symfony, so unlike the engine it makes
+      # no claim about the framework. What it must never know about is the
+      # application it was extracted from.
+      - name: Assert nothing references an application namespace
+        run: |
+          if grep -rnE '\bApp\\+[A-Z]' src/ ; then
+            echo "::error::src/ references an application namespace"
+            exit 1
+          fi
+          echo "confirmed: no application namespace in src/"
+
+  engine-stays-standalone:
+    name: Engine is not dragged into the framework
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+
+      # The whole reason this bundle is a separate package is that coolms/dtmpl
+      # can be installed without Symfony's kernel. If a future change moved a
+      # container dependency down into the engine, everything here would still
+      # pass while that promise quietly broke. Check it from this side too,
+      # where the engine is a real installed dependency.
+      - name: Install and inspect the engine
+        run: |
+          composer update --prefer-dist --no-interaction --no-progress --no-dev
+          if grep -rqE 'Symfony\\Component\\(HttpKernel|DependencyInjection)' vendor/coolms/dtmpl/src/ ; then
+            echo "::error::coolms/dtmpl has taken a dependency on the kernel or container"
+            exit 1
+          fi
+          echo "confirmed: the engine is still installable without Symfony's kernel"

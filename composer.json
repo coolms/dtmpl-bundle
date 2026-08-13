@@ -1,0 +1,52 @@
+{
+    "name": "coolms/dtmpl-bundle",
+    "description": "Symfony bundle for coolms/dtmpl: registers the engine's services, the loader chain, the widget registry and the constant providers",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "keywords": ["template", "template-engine", "dtmpl", "symfony", "bundle"],
+    "authors": [
+        {
+            "name": "Dmitry Popov"
+        }
+    ],
+    "require": {
+        "php": "^8.5",
+        "coolms/dtmpl": "^1.0",
+        "symfony/config": "^8.0",
+        "symfony/dependency-injection": "^8.0",
+        "symfony/http-kernel": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "CoolMS\\DtmplBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CoolMS\\DtmplBundle\\Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/coolms/dtmpl.git"
+        }
+    ],
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "symfony": {
+            "id": "coolms/dtmpl-bundle",
+            "allow-contrib": false
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

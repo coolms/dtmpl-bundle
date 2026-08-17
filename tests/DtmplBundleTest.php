@@ -20,7 +20,7 @@ final class DtmplBundleTest extends TestCase
 {
     public function testItExposesTheExtensionUnderTheExpectedAlias(): void
     {
-        $extension = (new DtmplBundle())->getContainerExtension();
+        $extension = new DtmplBundle()->getContainerExtension();
 
         self::assertInstanceOf(DtmplExtension::class, $extension);
         // config/packages/dtmpl.yaml is keyed on this. A mismatch makes Symfony
@@ -43,7 +43,7 @@ final class DtmplBundleTest extends TestCase
     public function testItAutoconfiguresTemplateLoaders(): void
     {
         $container = new ContainerBuilder();
-        (new DtmplBundle())->build($container);
+        new DtmplBundle()->build($container);
 
         $autoconfigured = $container->getAutoconfiguredInstanceof();
         self::assertArrayHasKey(TemplateLoaderInterface::class, $autoconfigured);
@@ -56,7 +56,7 @@ final class DtmplBundleTest extends TestCase
     public function testItRegistersAllThreeCompilerPasses(): void
     {
         $container = new ContainerBuilder();
-        (new DtmplBundle())->build($container);
+        new DtmplBundle()->build($container);
 
         $passes = $container->getCompiler()->getPassConfig()->getPasses();
         foreach ([LoaderChainPass::class, WidgetRegistryPass::class, ConstantProviderPass::class] as $class) {

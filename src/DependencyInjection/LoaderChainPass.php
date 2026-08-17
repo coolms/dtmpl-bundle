@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace CoolMS\DtmplBundle\DependencyInjection;
 
-use CoolMS\Dtmpl\Loader\FallbackTemplateLoader;
 use CoolMS\Dtmpl\Loader\CompositeTemplateLoader;
+use CoolMS\Dtmpl\Loader\FallbackTemplateLoader;
 use CoolMS\Dtmpl\TemplateLoaderInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

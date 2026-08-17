@@ -108,7 +108,7 @@ final class DtmplExtensionTest extends TestCase
     private function load(array $config = []): ContainerBuilder
     {
         $container = new ContainerBuilder();
-        (new DtmplExtension())->load([$config], $container);
+        new DtmplExtension()->load([$config], $container);
 
         return $container;
     }

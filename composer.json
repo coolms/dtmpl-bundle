@@ -3,7 +3,13 @@
     "description": "Symfony bundle for coolms/dtmpl: registers the engine's services, the loader chain, the widget registry and the constant providers",
     "type": "symfony-bundle",
     "license": "MIT",
-    "keywords": ["template", "template-engine", "dtmpl", "symfony", "bundle"],
+    "keywords": [
+        "template",
+        "template-engine",
+        "dtmpl",
+        "symfony",
+        "bundle"
+    ],
     "authors": [
         {
             "name": "Dmitry Popov"
@@ -11,7 +17,7 @@
     ],
     "require": {
         "php": "^8.5",
-        "coolms/dtmpl": "^1.0",
+        "coolms/dtmpl": "^2.0",
         "symfony/config": "^8.0",
         "symfony/dependency-injection": "^8.0",
         "symfony/http-kernel": "^8.0"
@@ -29,12 +35,6 @@
             "CoolMS\\DtmplBundle\\Tests\\": "tests/"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/coolms/dtmpl.git"
-        }
-    ],
     "scripts": {
         "test": "phpunit"
     },

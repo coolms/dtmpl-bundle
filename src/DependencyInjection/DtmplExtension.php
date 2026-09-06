@@ -73,7 +73,7 @@ class DtmplExtension extends Extension
             ->setAutoconfigured(false)
             ->setPublic(false);
 
-        // WidgetTemplateResolver -- the central widget→partial config map
+        // WidgetTemplateResolver -- the central widget->partial config map
         // (`dtmpl.widget_templates`); Domain services are wired here, not scanned.
         $container
             ->register(WidgetTemplateResolver::class, WidgetTemplateResolver::class)

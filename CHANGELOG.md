@@ -10,6 +10,22 @@ major number means here.
 history when this file was created. Every entry after that is written in the
 same commit as the change it describes.
 
+## 2.0.0-alpha2 - 2026-09-10
+
+### Fixed
+
+**The floor on `coolms/dtmpl` was a version too low.** `WidgetRegistryPass`
+calls `registerKeyed()`, which arrived in dtmpl 2.1.0 -- there are zero
+definitions of it at v2.0.0 -- while this package declared `^2.0`. Both
+`coolms/dtmpl` v2.0.0 and this package are published, and that constraint admits
+the pair, so an install could take an engine without the method and fail when a
+widget renderer declares a key.
+
+The call site is conditional, so the break is not certain on every install --
+which makes it worse to leave, not better: it waits for a keyed renderer.
+
+Nothing else changes. Same classes, same behaviour, one constraint.
+
 ## 2.0.0-alpha1 - 2026-09-09
 
 **A pre-release, and it replaces the withdrawn 2.0.0** -- see the note under

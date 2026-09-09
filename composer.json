@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "CoolMS\\DtmplBundle\\": "src/"
+            "CoolMS\\Dtmpl\\Bundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CoolMS\\DtmplBundle\\Tests\\": "tests/"
+            "CoolMS\\Dtmpl\\Bundle\\Tests\\": "tests/"
         }
     },
     "scripts": {

@@ -21,7 +21,7 @@ composer require coolms/dtmpl-bundle
 
 ```php
 // config/bundles.php
-CoolMS\DtmplBundle\DtmplBundle::class => ['all' => true],
+CoolMS\Dtmpl\Bundle\DtmplBundle::class => ['all' => true],
 ```
 
 ## Configuration

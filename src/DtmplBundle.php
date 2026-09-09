@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\DtmplBundle;
+namespace CoolMS\Dtmpl\Bundle;
 
 use CoolMS\Dtmpl\TemplateLoaderInterface;
-use CoolMS\DtmplBundle\DependencyInjection\ConstantProviderPass;
-use CoolMS\DtmplBundle\DependencyInjection\DtmplExtension;
-use CoolMS\DtmplBundle\DependencyInjection\LoaderChainPass;
-use CoolMS\DtmplBundle\DependencyInjection\WidgetRegistryPass;
+use CoolMS\Dtmpl\Bundle\DependencyInjection\ConstantProviderPass;
+use CoolMS\Dtmpl\Bundle\DependencyInjection\DtmplExtension;
+use CoolMS\Dtmpl\Bundle\DependencyInjection\LoaderChainPass;
+use CoolMS\Dtmpl\Bundle\DependencyInjection\WidgetRegistryPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

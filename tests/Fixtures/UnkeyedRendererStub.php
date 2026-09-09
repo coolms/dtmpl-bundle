@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\DtmplBundle\Tests\Fixtures;
+namespace CoolMS\Dtmpl\Bundle\Tests\Fixtures;
 
 use CoolMS\Dtmpl\Widget\WidgetRendererInterface;
 use Stringable;

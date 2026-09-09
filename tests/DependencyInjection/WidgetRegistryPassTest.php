@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\DtmplBundle\Tests\DependencyInjection;
+namespace CoolMS\Dtmpl\Bundle\Tests\DependencyInjection;
 
 use CoolMS\Dtmpl\Widget\WidgetRegistry;
-use CoolMS\DtmplBundle\DependencyInjection\WidgetRegistryPass;
-use CoolMS\DtmplBundle\Tests\Fixtures\KeyedRendererStub;
-use CoolMS\DtmplBundle\Tests\Fixtures\UnkeyedRendererStub;
+use CoolMS\Dtmpl\Bundle\DependencyInjection\WidgetRegistryPass;
+use CoolMS\Dtmpl\Bundle\Tests\Fixtures\KeyedRendererStub;
+use CoolMS\Dtmpl\Bundle\Tests\Fixtures\UnkeyedRendererStub;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;

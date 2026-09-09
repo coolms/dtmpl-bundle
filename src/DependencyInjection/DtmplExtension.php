@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CoolMS\DtmplBundle\DependencyInjection;
+namespace CoolMS\Dtmpl\Bundle\DependencyInjection;
 
 use CoolMS\Dtmpl\DtmplEngine;
 use CoolMS\Dtmpl\Lexer\KeywordRegistry;

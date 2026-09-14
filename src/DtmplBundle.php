@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace CoolMS\Dtmpl\Bundle;
 
-use CoolMS\Dtmpl\TemplateLoaderInterface;
 use CoolMS\Dtmpl\Bundle\DependencyInjection\ConstantProviderPass;
 use CoolMS\Dtmpl\Bundle\DependencyInjection\DtmplExtension;
 use CoolMS\Dtmpl\Bundle\DependencyInjection\LoaderChainPass;
 use CoolMS\Dtmpl\Bundle\DependencyInjection\WidgetRegistryPass;
+use CoolMS\Dtmpl\TemplateLoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

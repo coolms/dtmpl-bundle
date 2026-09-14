@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CoolMS\Dtmpl\Bundle\Tests\DependencyInjection;
 
+use CoolMS\Dtmpl\Bundle\DependencyInjection\DtmplExtension;
 use CoolMS\Dtmpl\DtmplEngine;
 use CoolMS\Dtmpl\Lexer\Lexer;
 use CoolMS\Dtmpl\Loader\CompositeTemplateLoader;
@@ -14,7 +15,6 @@ use CoolMS\Dtmpl\Runtime\FilterRegistry;
 use CoolMS\Dtmpl\Widget\WidgetRegistry;
 use CoolMS\Dtmpl\Widget\WidgetTemplateResolver;
 use CoolMS\Dtmpl\Widget\WidgetTemplateResolverInterface;
-use CoolMS\Dtmpl\Bundle\DependencyInjection\DtmplExtension;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace CoolMS\Dtmpl\Bundle\Tests;
 
-use CoolMS\Dtmpl\TemplateLoaderInterface;
 use CoolMS\Dtmpl\Bundle\DependencyInjection\ConstantProviderPass;
 use CoolMS\Dtmpl\Bundle\DependencyInjection\DtmplExtension;
 use CoolMS\Dtmpl\Bundle\DependencyInjection\LoaderChainPass;
 use CoolMS\Dtmpl\Bundle\DependencyInjection\WidgetRegistryPass;
 use CoolMS\Dtmpl\Bundle\DtmplBundle;
+use CoolMS\Dtmpl\TemplateLoaderInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

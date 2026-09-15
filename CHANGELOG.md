@@ -14,6 +14,10 @@ same commit as the change it describes.
 
 ### Added
 
+- Declares `support` -- `issues` and `source` -- so a page imported from this
+  package, and the catalogue, know where a correction is filed. Packagist filled
+  the gap from GitHub when the manifest was silent; the declared field is the
+  one that holds on any registry.
 **`Validation\DtmplSyntaxValidator` is a service, registered by class name
 beside the lexer and the parser and autowired like them.** Its alias resolver
 argument is optional on the engine's side, so the definition builds whether or

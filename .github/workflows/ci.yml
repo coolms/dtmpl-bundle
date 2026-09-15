@@ -36,12 +36,14 @@ jobs:
       - name: Validate composer.json
         run: composer validate --strict
 
+      # The validator arrives with coolms/dtmpl 2.2; until that tag exists the
+      # engine is resolved from its develop branch. Drop the pin once it does.
       - name: Install dependencies
         run: |
           if [ "${{ matrix.deps }}" = 'lowest' ]; then
-            composer update --prefer-lowest --prefer-dist --no-interaction --no-progress
+            composer update --prefer-lowest --prefer-dist --no-interaction --no-progress --with coolms/dtmpl:2.2.x-dev
           else
-            composer update --prefer-dist --no-interaction --no-progress
+            composer update --prefer-dist --no-interaction --no-progress --with coolms/dtmpl:2.2.x-dev
           fi
 
       - name: Lint sources
@@ -84,7 +86,7 @@ jobs:
       # where the engine is a real installed dependency.
       - name: Install and inspect the engine
         run: |
-          composer update --prefer-dist --no-interaction --no-progress --no-dev
+          composer update --prefer-dist --no-interaction --no-progress --no-dev --with coolms/dtmpl:2.2.x-dev
           if grep -rqE 'Symfony\\Component\\(HttpKernel|DependencyInjection)' vendor/coolms/dtmpl/src/ ; then
             echo "::error::coolms/dtmpl has taken a dependency on the kernel or container"
             exit 1

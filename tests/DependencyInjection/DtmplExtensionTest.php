@@ -12,6 +12,7 @@ use CoolMS\Dtmpl\Loader\FallbackTemplateLoader;
 use CoolMS\Dtmpl\Loader\FilesystemTemplateLoader;
 use CoolMS\Dtmpl\Parser\Parser;
 use CoolMS\Dtmpl\Runtime\FilterRegistry;
+use CoolMS\Dtmpl\Validation\DtmplSyntaxValidator;
 use CoolMS\Dtmpl\Widget\WidgetRegistry;
 use CoolMS\Dtmpl\Widget\WidgetTemplateResolver;
 use CoolMS\Dtmpl\Widget\WidgetTemplateResolverInterface;
@@ -41,6 +42,7 @@ final class DtmplExtensionTest extends TestCase
         yield 'lexer' => [Lexer::class];
         yield 'parser' => [Parser::class];
         yield 'filter registry' => [FilterRegistry::class];
+        yield 'syntax validator' => [DtmplSyntaxValidator::class];
     }
 
     /**

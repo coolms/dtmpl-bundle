@@ -15,6 +15,7 @@ use CoolMS\Dtmpl\Parser\Parser;
 use CoolMS\Dtmpl\Runtime\ConstantProviderInterface;
 use CoolMS\Dtmpl\Runtime\EntityWrapperFactory;
 use CoolMS\Dtmpl\Runtime\FilterRegistry;
+use CoolMS\Dtmpl\Validation\DtmplSyntaxValidator;
 use CoolMS\Dtmpl\ValueObject\TemplateExtensionMap;
 use CoolMS\Dtmpl\Widget\WidgetRegistry;
 use CoolMS\Dtmpl\Widget\WidgetRendererInterface;
@@ -95,7 +96,9 @@ class DtmplExtension extends Extension
         // classes sat under the application's `App\` glob; they live in a
         // package now, so the bundle has to register them. Every constructor
         // here is autowirable: scalars carry defaults, and the only object
-        // dependencies are the property accessor and the loader chain.
+        // dependencies are the property accessor and the loader chain. The
+        // validator's alias resolver is optional on the engine's side, so it
+        // is filled when a bundle provides one and left empty otherwise.
         //
         // Registered by class name with no alias, because that is what callers
         // already type-hint.
@@ -108,6 +111,7 @@ class DtmplExtension extends Extension
             Parser::class,
             FilterRegistry::class,
             WhitespaceTrimmer::class,
+            DtmplSyntaxValidator::class,
         ] as $class) {
             $container
                 ->register($class, $class)

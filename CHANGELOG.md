@@ -10,6 +10,24 @@ major number means here.
 history when this file was created. Every entry after that is written in the
 same commit as the change it describes.
 
+## Unreleased
+
+### Added
+
+**`Validation\DtmplSyntaxValidator` is a service, registered by class name
+beside the lexer and the parser and autowired like them.** Its alias resolver
+argument is optional on the engine's side, so the definition builds whether or
+not a bundle provides `Validation\AliasResolverInterface`: with one, `@alias`
+resolves to the class it names; without one, every `@alias` is refused as
+unknown. `coolms/entity-bundle` provides it.
+
+### Changed
+
+**Requires `coolms/dtmpl` `^2.2`, the line that carries the validator.** The
+previous floor admits an engine without the class, and a container that
+autowires a service whose class does not exist fails at compile time. Until
+2.2.0 is tagged, CI resolves the engine from its `develop` branch.
+
 ## 2.0.0-alpha2 - 2026-09-10
 
 ### Fixed
